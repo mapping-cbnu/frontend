@@ -1,6 +1,9 @@
 import './css/menu.css';
+import { MapMarker } from 'react-kakao-maps-sdk';
 
-function Buttons() {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function Buttons(props: any) {
+  const location = props.data;
   return (
     <div>
       <button
@@ -27,6 +30,7 @@ function Buttons() {
             'url(//t1.daumcdn.net/localimg/localimages/07/2018/pc/common/img_search.png) no-repeat -153px -450px',
         }}
       ></button>
+      {location && <MapMarker position={location} />}
     </div>
   );
 }
