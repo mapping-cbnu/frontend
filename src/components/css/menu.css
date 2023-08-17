@@ -1,7 +1,7 @@
 .customButton {
   position: absolute;
   z-index: 3;
-  right: 1em;
+  right: 0.5em;
   float: left;
   width: 32px;
   height: 32px;
