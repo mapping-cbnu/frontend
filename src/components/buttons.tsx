@@ -54,7 +54,21 @@ function Buttons(props: any) {
             'url(//t1.daumcdn.net/localimg/localimages/07/2018/pc/common/img_search.png) no-repeat -153px -450px',
         }}
       ></button>
-      {toggle && <MapMarker position={location} />}
+      {toggle && (
+        <MapMarker
+          position={location}
+          image={{
+            src: './public_assets/addMarker.png',
+            size: { width: 200, height: 60 },
+            options: {
+              offset: {
+                x: 16,
+                y: 52,
+              },
+            },
+          }}
+        />
+      )}
     </div>
   );
 }
