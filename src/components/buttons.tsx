@@ -67,6 +67,7 @@ function Buttons(props: any) {
               },
             },
           }}
+          onClick={}
         />
       )}
     </div>
