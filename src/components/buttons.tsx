@@ -87,6 +87,7 @@ function Buttons(props: any) {
           data={location}
           close={modalClose}
           modalState={modalIsOpen}
+          markerSign={clickedToggle}
         />
       )}
     </div>
