@@ -1,4 +1,5 @@
 import './css/menu.css';
+import ModalOpen from './modalOpen';
 import { MapMarker } from 'react-kakao-maps-sdk';
 import { useState } from 'react';
 
@@ -6,10 +7,17 @@ import { useState } from 'react';
 function Buttons(props: any) {
   const location = props.data;
   const [toggle, setToggle] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const clickedToggle = () => {
     setToggle((prev) => !prev);
   };
-  console.log('toggle', toggle);
+  const modalClose = () => {
+    setModalIsOpen(false);
+  };
+
+  // console.log('toggle', toggle);
+  console.log('modal', modalIsOpen);
+  // console.log('위치', location);
 
   return (
     <div>
@@ -55,19 +63,30 @@ function Buttons(props: any) {
         }}
       ></button>
       {toggle && (
-        <MapMarker
-          position={location}
-          image={{
-            src: './public_assets/addMarker.png',
-            size: { width: 200, height: 60 },
-            options: {
-              offset: {
-                x: 16,
-                y: 52,
+        <>
+          <MapMarker
+            position={location}
+            image={{
+              src: './public_assets/addMarker.png',
+              size: { width: 200, height: 60 },
+              options: {
+                offset: {
+                  x: 16,
+                  y: 52,
+                },
               },
-            },
-          }}
-          onClick={}
+            }}
+            onClick={() => {
+              setModalIsOpen(true);
+            }}
+          />
+        </>
+      )}
+      {modalIsOpen && (
+        <ModalOpen
+          data={location}
+          close={modalClose}
+          modalState={modalIsOpen}
         />
       )}
     </div>
