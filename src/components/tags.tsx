@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { MapMarker } from 'react-kakao-maps-sdk';
 import './css/category.css';
 
-function Tags() {
+function Tags(props: any) {
   // 쓰레기통 마커가 표시될 좌표 배열입니다
   const trashPositions = [
     { lat: 37.499590490909185, lng: 127.0263723554437 },
@@ -16,7 +16,7 @@ function Tags() {
   ];
 
   // 화장실 마커가 표시될 좌표 배열입니다
-  const tolietPositions = [
+  const toiletPositions = [
     { lat: 37.497535461505684, lng: 127.02948149502778 },
     { lat: 37.49671536281186, lng: 127.03020491448352 },
     { lat: 37.496201943633714, lng: 127.02959405469642 },
@@ -80,28 +80,28 @@ function Tags() {
   useEffect(() => {
     const allMenu: any = document.getElementById('allMenu');
     const trashMenu: any = document.getElementById('trashMenu');
-    const tolietMenu: any = document.getElementById('tolietMenu');
+    const toiletMenu: any = document.getElementById('toiletMenu');
     const constructionMenu: any = document.getElementById('constructionMenu');
 
     if (selectedCategory === 'all') {
       allMenu.className = 'menu_selected';
       trashMenu.className = 'not_selected';
-      tolietMenu.className = 'not_selected';
+      toiletMenu.className = 'not_selected';
       constructionMenu.className = 'not_selected';
     } else if (selectedCategory === 'trash') {
       allMenu.className = 'not_selected';
       trashMenu.className = 'menu_selected';
-      tolietMenu.className = 'not_selected';
+      toiletMenu.className = 'not_selected';
       constructionMenu.className = 'not_selected';
-    } else if (selectedCategory === 'toliet') {
+    } else if (selectedCategory === 'toilet') {
       allMenu.className = 'not_selected';
       trashMenu.className = 'not_selected';
-      tolietMenu.className = 'menu_selected';
+      toiletMenu.className = 'menu_selected';
       constructionMenu.className = 'not_selected';
     } else if (selectedCategory === 'construction') {
       allMenu.className = 'not_selected';
       trashMenu.className = 'not_selected';
-      tolietMenu.className = 'not_selected';
+      toiletMenu.className = 'not_selected';
       constructionMenu.className = 'menu_selected';
     }
   }, [selectedCategory]);
@@ -121,10 +121,10 @@ function Tags() {
             position={position}
           />
         ))}
-      {selectedCategory === 'toliet' &&
-        tolietPositions.map((position) => (
+      {selectedCategory === 'toilet' &&
+        toiletPositions.map((position) => (
           <MapMarker
-            key={`toliet-${position.lat},${position.lng}`}
+            key={`toilet-${position.lat},${position.lng}`}
             position={position}
           />
         ))}
@@ -137,18 +137,39 @@ function Tags() {
         ))}
       <div className="category">
         <ul>
-          <li id="allMenu" onClick={() => setSelectedCategory('all')}>
+          <li
+            id="allMenu"
+            onClick={() => {
+              setSelectedCategory('all');
+              props.change(false);
+            }}
+          >
             모두
           </li>
-          <li id="trashMenu" onClick={() => setSelectedCategory('trash')}>
+          <li
+            id="trashMenu"
+            onClick={() => {
+              setSelectedCategory('trash');
+              props.change(false);
+            }}
+          >
             쓰레기통
           </li>
-          <li id="tolietMenu" onClick={() => setSelectedCategory('toliet')}>
+          <li
+            id="toiletMenu"
+            onClick={() => {
+              setSelectedCategory('toilet');
+              props.change(false);
+            }}
+          >
             화장실
           </li>
           <li
             id="constructionMenu"
-            onClick={() => setSelectedCategory('construction')}
+            onClick={() => {
+              setSelectedCategory('construction');
+              props.change(false);
+            }}
           >
             공사중
           </li>

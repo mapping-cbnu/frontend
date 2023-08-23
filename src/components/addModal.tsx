@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import { useState } from 'react';
 import './css/modal.css';
 
-function ModalOpen(props: any) {
+function AddModal(props: any) {
   const customModalStyles: ReactModal.Styles = {
     overlay: {
       backgroundColor: ' rgba(0, 0, 0, 0.4)',
@@ -113,4 +113,4 @@ function ModalOpen(props: any) {
     </>
   );
 }
-export default ModalOpen;
+export default AddModal;
