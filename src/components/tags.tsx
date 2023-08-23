@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { MapMarker } from 'react-kakao-maps-sdk';
 import './css/category.css';
 
-function Tags(props: any) {
+function Tags() {
   // 쓰레기통 마커가 표시될 좌표 배열입니다
   const trashPositions = [
     { lat: 37.499590490909185, lng: 127.0263723554437 },
@@ -141,7 +141,6 @@ function Tags(props: any) {
             id="allMenu"
             onClick={() => {
               setSelectedCategory('all');
-              props.change(false);
             }}
           >
             모두
@@ -150,7 +149,6 @@ function Tags(props: any) {
             id="trashMenu"
             onClick={() => {
               setSelectedCategory('trash');
-              props.change(false);
             }}
           >
             쓰레기통
@@ -159,7 +157,6 @@ function Tags(props: any) {
             id="toiletMenu"
             onClick={() => {
               setSelectedCategory('toilet');
-              props.change(false);
             }}
           >
             화장실
@@ -168,7 +165,6 @@ function Tags(props: any) {
             id="constructionMenu"
             onClick={() => {
               setSelectedCategory('construction');
-              props.change(false);
             }}
           >
             공사중

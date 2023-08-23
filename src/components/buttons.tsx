@@ -3,25 +3,24 @@ import AddModal from './addModal';
 import { MapMarker } from 'react-kakao-maps-sdk';
 import { useState } from 'react';
 import Tags from './tags';
-import Markers from './markers';
+import SearchModal from './searchModal';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function Buttons(props: any) {
   const location = props.data;
   const [toggle, setToggle] = useState(false);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [addModal, setAddModal] = useState(false);
   const [searchBtn, setSearchBtn] = useState(false);
 
   const clickedToggle = () => {
     setToggle((prev) => !prev);
   };
   const modalClose = () => {
-    setModalIsOpen(false);
+    setAddModal(false);
   };
   const clickSearchBtn = () => {
     setSearchBtn((prev) => !prev);
   };
-  console.log(searchBtn);
 
   return (
     <div>
@@ -68,7 +67,6 @@ function Buttons(props: any) {
       ></button>
 
       {searchBtn ? (
-        // 추가 버튼 활성화
         <button
           className="customButton"
           style={{
@@ -80,7 +78,6 @@ function Buttons(props: any) {
           onClick={clickSearchBtn}
         ></button>
       ) : (
-        // 추가 버튼 비활성화
         <button
           className="customButton"
           style={{
@@ -107,21 +104,21 @@ function Buttons(props: any) {
               },
             }}
             onClick={() => {
-              setModalIsOpen(true);
+              setAddModal(true);
             }}
           />
         </>
       )}
-      {modalIsOpen && (
+      {addModal && (
         <AddModal
           data={location}
           close={modalClose}
-          modalState={modalIsOpen}
+          modalState={addModal}
           markerSign={clickedToggle}
         />
       )}
       {/* 검색 버튼 활성화에 따라 tag와 검색 컴포넌트 구분 */}
-      {searchBtn ? <Markers /> : <Tags change={setSearchBtn} />}
+      {searchBtn ? <SearchModal endBtn={clickSearchBtn} /> : <Tags />}
     </div>
   );
 }
