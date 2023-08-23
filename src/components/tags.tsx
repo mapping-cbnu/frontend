@@ -108,32 +108,20 @@ function Tags() {
   return (
     <>
       {selectedCategory === 'all' &&
-        allPositions.map((position) => (
-          <MapMarker
-            key={`all-${position.lat},${position.lng}`}
-            position={position}
-          />
+        allPositions.map((position, index) => (
+          <MapMarker key={index} position={position} />
         ))}
       {selectedCategory === 'trash' &&
-        trashPositions.map((position) => (
-          <MapMarker
-            key={`trash-${position.lat},${position.lng}`}
-            position={position}
-          />
+        trashPositions.map((position, index) => (
+          <MapMarker key={index} position={position} />
         ))}
       {selectedCategory === 'toilet' &&
-        toiletPositions.map((position) => (
-          <MapMarker
-            key={`toilet-${position.lat},${position.lng}`}
-            position={position}
-          />
+        toiletPositions.map((position, index) => (
+          <MapMarker key={index} position={position} />
         ))}
       {selectedCategory === 'construction' &&
-        constructionPositions.map((position) => (
-          <MapMarker
-            key={`construction-${position.lat},${position.lng}`}
-            position={position}
-          />
+        constructionPositions.map((position, index) => (
+          <MapMarker key={index} position={position} />
         ))}
       <div className="category">
         <ul>
