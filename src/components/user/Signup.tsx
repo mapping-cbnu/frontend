@@ -9,7 +9,7 @@ function Signup() {
   const [checkingPassword, setCheckingPassword] = useState('');
   const [message, setMessage] = useState('');
   const [blankMessage, setBlankMessage] = useState('');
-  const onChangeId = (e: { target: { value: SetStateAction<string>; }; }) => {
+  const onChangeId = (e: { target: { value: SetStateAction<string> } }) => {
     setId(e.target.value);
   };
   const onChangePassword = (e: {
@@ -28,20 +28,26 @@ function Signup() {
     }
     if (currentPassword === '') setMessage('');
   };
-  const checkingBlank = (e: any) => {
-    if(Id && password && checkingPassword) {
+  const checkingBlank = () => {
+    if (Id && password && checkingPassword) {
       setBlankMessage('');
     } else {
       setBlankMessage('빈칸이 있습니다.');
     }
-  }
+  };
   return (
     <div className="container">
       <h1>회원가입</h1>
 
       <form action="" method="post">
         <div className="input__block">
-          <input type="text" placeholder="아이디" className="input" id="ID" onChange={onChangeId} />
+          <input
+            type="text"
+            placeholder="아이디"
+            className="input"
+            id="ID"
+            onChange={onChangeId}
+          />
         </div>
         <div className="input__block">
           <input
@@ -62,8 +68,14 @@ function Signup() {
           />
         </div>
         <div className={message ? 'message-active' : ''}>{message}</div>
-        <div className={blankMessage ? 'message-active' : ''}>{blankMessage}</div>
-        <button type={blankMessage ? "button" : "submit"} className="signup__btn" onClick={checkingBlank}>
+        <div className={blankMessage ? 'message-active' : ''}>
+          {blankMessage}
+        </div>
+        <button
+          type={blankMessage ? 'button' : 'submit'}
+          className="signup__btn"
+          onClick={checkingBlank}
+        >
           회원가입
         </button>
       </form>
