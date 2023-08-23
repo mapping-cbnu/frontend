@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Map, ZoomControl } from 'react-kakao-maps-sdk';
 import CurrentLocation from '../components/currentLocation';
 import Markers from '../components/markers';
 import Buttons from '../components/buttons';
 import { useState } from 'react';
+import Tags from '../components/tags';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function MainPage(props: any) {
@@ -26,6 +28,7 @@ function MainPage(props: any) {
         <Markers />
         <ZoomControl position={kakao.maps.ControlPosition.TOPRIGHT} />
         <Buttons data={position} />
+        <Tags />
       </Map>
     </>
   );
