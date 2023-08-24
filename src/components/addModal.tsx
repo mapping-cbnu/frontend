@@ -2,6 +2,7 @@
 import Modal from 'react-modal';
 import { useState } from 'react';
 import './css/modal.css';
+import axios from 'axios';
 
 function AddModal(props: any) {
   const customModalStyles: ReactModal.Styles = {
@@ -35,8 +36,8 @@ function AddModal(props: any) {
     content: '',
     lat: props.data.lat,
     lng: props.data.lng,
-    image: '',
-    user: 'anyone', //유저이 이름을 가져와서 여기 대입
+    file: '',
+    writer: 'anyone', //유저이 이름을 가져와서 여기 대입
   });
 
   const handleChange = (e: any) => {
@@ -46,9 +47,15 @@ function AddModal(props: any) {
     });
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-    alert(JSON.stringify(values, null, 2) + '\n메모가 추가되었습니다');
+    try {
+      await axios.post('http://mapping.kro.kr:8080/memo/upload', values);
+      // 데이터 전송 후 원하는 작업 수행
+      console.log('메모가 성공적으로 생성되었습니다.');
+    } catch (error) {
+      console.error('메모 생성에 실패했습니다.', error);
+    }
     props.close(); //입력 창 닫기
     props.markerSign(); //마커 추가 활성화 버튼 끄기
   };
@@ -92,9 +99,9 @@ function AddModal(props: any) {
               <input
                 className="upload-name"
                 type="file"
-                name="image"
+                name="file"
                 accept="image/*"
-                value={values.image}
+                value={values.file}
                 onChange={handleChange}
                 placeholder="이미지를 업로드 하세요"
               />
