@@ -1,10 +1,12 @@
 import './css/user.css';
 import './css/button.css';
+import Modify from './Modify';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
 function Memo(props: any) {
   return (
     <>
+      <Modify data={props.data} />
       <li>
         <div className="memo-title-container">
           <div className="memo-title">{props.data.tag}</div>
