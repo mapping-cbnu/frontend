@@ -76,7 +76,7 @@ function SearchModal(props: any) {
               <input
                 type="text"
                 name="search"
-                value={values}
+                value={values || ''}
                 onChange={handleChange}
               />
             </p>

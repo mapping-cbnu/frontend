@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from 'react';
 import Marker from './marker'; // 파일명 대소문자를 확인하여 수정
 
 function Markers(props: any) {
