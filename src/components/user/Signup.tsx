@@ -2,12 +2,11 @@ import { SetStateAction, useState } from 'react';
 import axios from 'axios';
 import './css/user.css';
 
-// 회원가입
-function Signup() {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function Signup(props: any) {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [checkingPassword, setCheckingPassword] = useState('');
   const [message, setMessage] = useState('');
   const [blankMessage, setBlankMessage] = useState('');
@@ -43,6 +42,11 @@ function Signup() {
     }
   };
 
+  const closeSignup = () => {
+    props.signup();
+    props.close();
+  };
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -65,62 +69,80 @@ function Signup() {
   };
 
   return (
-    <div className="container">
-      <h1>회원가입</h1>
+    <>
+      <button
+        type="button"
+        className="signin-close-button"
+        onClick={closeSignup}
+      />
+      <div className="container">
+        <h1>회원가입</h1>
 
-      <form action="" method="post">
-        <div className="input__block">
-          <input
-            type="email"
-            placeholder="이메일"
-            className="input"
-            id="email"
-            onChange={onChangeEmail}
-          />
+        <form action="" method="post">
+          <div className="input__block">
+            <input
+              type="email"
+              placeholder="이메일"
+              className="input"
+              id="email"
+              onChange={onChangeEmail}
+            />
+          </div>
+          <div className="input__block">
+            <input
+              type="text"
+              placeholder="닉네임"
+              className="input"
+              id="name"
+              maxLength={8}
+              onChange={onChangeName}
+            />
+          </div>
+          <div className="input__block">
+            <input
+              type="password"
+              placeholder="비밀번호"
+              className="input"
+              id="PW"
+              onChange={onChangePassword}
+            />
+          </div>
+          <div className="input__block">
+            <input
+              type="password"
+              placeholder="비밀번호 재입력"
+              className="input"
+              id="Repeat_PW"
+              onChange={onChangeCheckingPassword}
+            />
+          </div>
+          <div className={message ? 'message-active' : ''}>{message}</div>
+          <div className={blankMessage ? 'message-active' : ''}>
+            {blankMessage}
+          </div>
+          {blankMessage ? (
+            <button
+              type="button"
+              className="signup__btn"
+              onClick={checkingBlank}
+            >
+              회원가입
+            </button>
+          ) : (
+            <button
+              type="submit"
+              className="signup__btn"
+              onClick={handleSubmit}
+            >
+              회원가입
+            </button>
+          )}
+        </form>
+        <div className="sign__link" onClick={props.signup}>
+          로그인
         </div>
-        <div className="input__block">
-          <input
-            type="text"
-            placeholder="닉네임"
-            className="input"
-            id="name"
-            maxLength={8}
-            onChange={onChangeName}
-          />
-        </div>
-        <div className="input__block">
-          <input
-            type="password"
-            placeholder="비밀번호"
-            className="input"
-            id="PW"
-            onChange={onChangePassword}
-          />
-        </div>
-        <div className="input__block">
-          <input
-            type="password"
-            placeholder="비밀번호 재입력"
-            className="input"
-            id="Repeat_PW"
-            onChange={onChangeCheckingPassword}
-          />
-        </div>
-        <div className={message ? 'message-active' : ''}>{message}</div>
-        <div className={blankMessage ? 'message-active' : ''}>
-          {blankMessage}
-        </div>
-        {blankMessage ? (
-          <button type="button" className="signup__btn" onClick={checkingBlank}>
-            회원가입
-          </button>
-        ) : (
-          <button type="submit" className="signup__btn" onClick={handleSubmit}>
-            회원가입
-          </button>
-        )}
-      </form>
-    </div>
+      </div>
+    </>
   );
 }
 
