@@ -58,7 +58,6 @@ function AddModal(props: any) {
     formData.append('content', content);
     formData.append('lat', props.data.lat);
     formData.append('lng', props.data.lng);
-    formData.append('writer', 'anyone'); //일단 기본 설정
     if (image) {
       formData.append('file', image);
     }
