@@ -177,6 +177,7 @@ form .signup__btn:hover {
 }
 .memo-img {
   width: auto;
+  max-width: 80%;
   height: 40%;
   margin: auto;
   display: block;
