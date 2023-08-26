@@ -11,15 +11,15 @@ function AddModal(props: any) {
       backgroundColor: ' rgba(0, 0, 0, 0.4)',
       width: '100%',
       height: '100vh',
-      zIndex: '11',
+      zIndex: '20',
       position: 'fixed',
       top: '0',
       left: '0',
     },
     content: {
-      width: '80%',
-      zIndex: '12',
-      minHeight: '47%',
+      width: '240px',
+      zIndex: '21',
+      height: '355px',
       position: 'absolute',
       top: '50%',
       left: '50%',
@@ -64,7 +64,7 @@ function AddModal(props: any) {
 
     try {
       const token = cookies.accessToken; // 쿠키에서 token 를 꺼내기
-      await axios.post('http://mapping.kro.kr:8080/api/memo/upload', formData, {
+      await axios.post('https://mapping.kro.kr:81/api/memo/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,
@@ -103,7 +103,8 @@ function AddModal(props: any) {
             </p>
             <p>
               내용:
-              <textarea
+              <input
+                type="text"
                 name="content"
                 value={content}
                 onChange={handleContentChange}
