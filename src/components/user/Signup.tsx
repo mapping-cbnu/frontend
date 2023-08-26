@@ -62,7 +62,7 @@ function Signup(props: any) {
 
     try {
       const result = await axios.post(
-        'http://mapping.kro.kr:8080/api/auth/signUp',
+        'https://mapping.kro.kr:81/api/auth/signUp',
         formData,
         {
           headers: {
