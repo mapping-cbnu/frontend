@@ -4,32 +4,40 @@ import './css/user.css';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function Signup(props: any) {
+  const [clickedButton, setClickedButton] = useState(0);
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [checkingPassword, setCheckingPassword] = useState('');
   const [message, setMessage] = useState('');
   const [blankMessage, setBlankMessage] = useState('');
+  const [failedSignup, setFailedSignup] = useState('');
 
   const onChangeEmail = (e: { target: { value: SetStateAction<string> } }) => {
     setEmail(e.target.value);
-    checkingBlank();
+    if (clickedButton === 1) checkingBlank();
   };
   const onChangeName = (e: { target: { value: SetStateAction<string> } }) => {
     setName(e.target.value);
-    checkingBlank();
+    if (clickedButton === 1) checkingBlank();
   };
   const onChangePassword = (e: {
     target: { value: SetStateAction<string> };
   }) => {
     setPassword(e.target.value);
-    checkingBlank();
+    if (checkingPassword !== e.target.value && checkingPassword !== '') {
+      setMessage('비밀번호가 다릅니다.');
+    } else {
+      setMessage('');
+    }
+    if (clickedButton === 1) checkingBlank();
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onChangeCheckingPassword = (e: { target: { value: any } }) => {
     const currentPassword = e.target.value;
     setCheckingPassword(currentPassword);
+    if (clickedButton === 1) checkingBlank();
     if (password !== currentPassword) {
       setMessage('비밀번호가 다릅니다.');
     } else {
@@ -38,6 +46,7 @@ function Signup(props: any) {
     if (currentPassword === '') setMessage('');
   };
   const checkingBlank = () => {
+    setClickedButton(1);
     if (email && password && checkingPassword && name) {
       setBlankMessage('');
     } else {
@@ -76,9 +85,11 @@ function Signup(props: any) {
         alert('회원이 성공적으로 생성되었습니다. \n다시 로그인 해주세요.');
         window.location.reload();
       } else {
-        alert(result.data.message);
+        setFailedSignup(result.data.message);
+        // alert(result.data.message);
       }
     } catch (error) {
+      setFailedSignup('회원 생성에 실패했습니다.');
       console.error('회원 생성에 실패했습니다.', error);
     }
   };
@@ -135,7 +146,10 @@ function Signup(props: any) {
           <div className={blankMessage ? 'message-active' : ''}>
             {blankMessage}
           </div>
-          {email && name && password && checkingPassword ? (
+          <div className={failedSignup ? 'message-active' : ''}>
+            {failedSignup}
+          </div>
+          {email && name && password && checkingPassword && !message ? (
             <button
               type="submit"
               className="signup__btn"
