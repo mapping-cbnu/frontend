@@ -1,0 +1,196 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: white;
+}
+
+.container {
+  display: block;
+  max-width: 680px;
+  width: 80%;
+  margin: 60px auto;
+}
+
+h1 {
+  color: #238cfa;
+  font-size: 48px;
+  letter-spacing: -3px;
+  text-align: center;
+  margin: 60px 0 80px 0;
+  transition: 0.2s linear;
+}
+
+h2 {
+  font-family: Impact, Charcoal, 'Montserrat', sans-serif;
+  color: #238cfa;
+  margin: 10px 0 20px 3px;
+}
+
+form {
+  width: 100%;
+  max-width: 680px;
+  margin: 40px auto 10px;
+}
+form .input__block {
+  margin: 20px auto;
+  display: block;
+  position: relative;
+}
+form .input__block input {
+  display: block;
+  width: 90%;
+  max-width: 680px;
+  height: 50px;
+  margin: 0 auto;
+  border-radius: 8px;
+  border: none;
+  background: rgba(15, 19, 42, 0.1);
+  color: rgba(15, 19, 42, 0.3);
+  padding: 0 0 0 15px;
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+form .input__block input.repeat__password {
+  opacity: 0;
+  display: none;
+  transition: 0.2s linear;
+}
+form .signin__btn {
+  background: #238cfa;
+  color: white;
+  display: block;
+  width: 92.5%;
+  max-width: 680px;
+  height: 50px;
+  border-radius: 8px;
+  margin: 0 auto;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
+  box-shadow: 0 15px 30px rgba(35, 140, 250, 0.36);
+  transition: 0.2s linear;
+}
+form .signin__btn:hover {
+  box-shadow: 0 0 0 rgba(233, 30, 99, 0);
+}
+
+.signin-close-button {
+  background: url('https://cdn-icons-png.flaticon.com/512/75/75519.png')
+    no-repeat;
+  width: 25px;
+  height: 25px;
+  background-size: contain;
+  border: none;
+  cursor: pointer;
+  display: block;
+  margin: auto;
+  margin-right: 30px;
+  margin-top: 30px;
+}
+
+form .signup__btn {
+  background: #238cfa;
+  color: white;
+  display: block;
+  width: 92.5%;
+  max-width: 680px;
+  height: 50px;
+  border-radius: 8px;
+  margin: 0 auto;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
+  box-shadow: 0 15px 30px rgba(35, 140, 250, 0.36);
+  transition: 0.2s linear;
+}
+form .signup__btn:hover {
+  box-shadow: 0 0 0 rgba(233, 30, 99, 0);
+}
+
+.sign__link {
+  color: #9b9b9b;
+  font-size: 15px;
+  text-align: right;
+  margin: 50px 20px 0 0;
+  cursor: pointer;
+}
+.sign__link:hover {
+  text-shadow: 0 15px 20px rgba(35, 140, 250, 0.36);
+}
+
+.message-active {
+  margin: 0 0 20px 25px;
+  color: red;
+}
+
+.my-page {
+  font-size: 20px;
+  display: inline;
+  color: #238cfa;
+  margin-right: 30px;
+  margin-left: 5%;
+}
+.memo-close-button {
+  background: url('https://cdn-icons-png.flaticon.com/512/75/75519.png')
+    no-repeat;
+  width: 25px;
+  height: 25px;
+  background-size: contain;
+  border: none;
+  margin: 12px 6px 0 0;
+  cursor: pointer;
+}
+
+.memo-container {
+  display: block;
+  max-width: 800px;
+  width: 80%;
+  margin: auto;
+}
+.memo-title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.memo-title {
+  font-size: x-large;
+}
+.memo-date {
+  flex-shrink: 0;
+}
+.my-page-id {
+  font-size: 20px;
+  display: inline;
+}
+.memo-button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+}
+.memo-content-container {
+  display: block;
+  margin-top: 15px;
+  position: relative;
+  justify-content: center;
+}
+.memo-img {
+  max-width: 60%;
+  max-height: 60%;
+  margin: auto;
+  display: block;
+}
+
+hr.rounded {
+  border-top: 3px solid #238cfa;
+  border-radius: 5px;
+}
+hr.rounded.memo {
+  border-top: 3px solid #dcdcdc;
+  border-radius: 5px;
+}
+
+li {
+  margin-bottom: 20px;
+}
