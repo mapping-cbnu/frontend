@@ -20,7 +20,7 @@ function Modify(props: any) {
     content: {
       width: '240px',
       zIndex: '21',
-      height: '355px',
+      height: '280px',
       position: 'absolute',
       top: '50%',
       left: '50%',
@@ -83,7 +83,7 @@ function Modify(props: any) {
         shouldCloseOnOverlayClick={false}
       >
         <div className="modal">
-          <h2>메모 작성</h2>
+          <h2>메모 수정</h2>
           <form onSubmit={handleSubmit}>
             <p>
               태그:
